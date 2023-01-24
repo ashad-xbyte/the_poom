@@ -9,8 +9,12 @@
 </head>
 <body>
 
-<form action="/signup" method="POST">
+<form action="/register" method="POST">
     {% csrf_token %}
+
+  <label for="username">User name:</label><br>
+    <input type="text" id="username" name="username" required><br><br>
+
   <label for="fname">First name:</label><br>
     <input type="text" id="fname" name="fname" required><br><br>
 
@@ -24,7 +28,7 @@
     <input type="password" id="passd" name="passd" required><br><br>
 
   <label for="cpass">Confirm password:</label><br>
-    <input type="password" id="cpass" name="pass" required><br><br>
+    <input type="password" id="cpass" name="cpass" required><br><br>
 
   <label for="des">Designation:</label><br>
     <input type="text" id="des" name="des" required><br><br>
