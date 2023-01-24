@@ -1,15 +1,7 @@
-import pymongo
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
-from pymongo import MongoClient
-
-client = pymongo.MongoClient('mongodb://localhost:27017')
-db = client['EMS']
-ems_collection = db['Ems_1']
-
-
 
 def home(request):
     return render(request, 'auth/index.html')
