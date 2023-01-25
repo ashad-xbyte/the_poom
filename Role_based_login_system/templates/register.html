@@ -109,52 +109,59 @@
                     <label for="des">Designation</label>
                       {{ form.designation }}
                   </div>
+                        <span class="text-error">{{ form.errors }}</span>
+                        <div class="dropdown">
 
-              <div class="form-check">
-                  <div class="d-flex mb-5 align-items-center">
-                    <label class="form-check-input"><span class="caption">Admin</span>
-                        {{ form.is_admin }}
-<!--                      <div class="control__indicator"></div>-->
-                    </label>
-                  </div>
-                  <div class="d-flex mb-5 align-items-center">
-                    <label class="form-check-input"><span class="caption">Sales</span>
-                        {{ form.is_sales }}
-<!--                      <div class="control__indicator"></div>-->
-                    </label>
-                  </div>
-                  <div class="d-flex mb-5 align-items-center">
-                    <label class="form-check-input"><span class="caption">Production</span>
-                        {{ form.is_production }}
-<!--                      <div class="control__indicator"></div>-->
-                    </label>
-                  </div>
-                  <div class="d-flex mb-5 align-items-center">
-                    <label class="form-check-input"><span class="caption">Devloper</span>
-                        {{ form.is_devloper }}
-<!--                      <div class="control__indicator"></div>-->
-                    </label>
-                  </div>
-                  <div class="d-flex mb-5 align-items-center">
-                    <label class="form-check-input"><span class="caption">Client</span>
-                        {{ form.is_client }}
-<!--                      <div class="control__indicator"></div>-->
-                    </label>
-                  </div>
+                           {{ form.roles }}
+                        </div>
 
-                </div>
 
-                    <span class="text-error">{{ form.errors }}</span>
-<!--                    <input type="submit" value="Register">-->
+<!--              <div class="form-check">-->
+<!--                  <div class="d-flex mb-5 align-items-center">-->
+<!--                    <label class="form-check-input" type="radio"><span class="caption">Admin</span>-->
+<!--                        {{ form.is_admin }}-->
+<!--&lt;!&ndash;                      <div class="control__indicator"></div>&ndash;&gt;-->
+<!--                    </label>-->
+<!--                  </div>-->
+<!--                  <div class="d-flex mb-5 align-items-center">-->
+<!--                    <label class="form-check-input"><span class="caption">Sales</span>-->
+<!--                        {{ form.is_sales }}-->
+<!--&lt;!&ndash;                      <div class="control__indicator"></div>&ndash;&gt;-->
+<!--                    </label>-->
+<!--                  </div>-->
+<!--                  <div class="d-flex mb-5 align-items-center">-->
+<!--                    <label class="form-check-input"><span class="caption">Production</span>-->
+<!--                        {{ form.is_production }}-->
+<!--&lt;!&ndash;                      <div class="control__indicator"></div>&ndash;&gt;-->
+<!--                    </label>-->
+<!--                  </div>-->
+<!--                  <div class="d-flex mb-5 align-items-center">-->
+<!--                    <label class="form-check-input"><span class="caption">Devloper</span>-->
+<!--                        {{ form.is_devloper }}-->
+<!--&lt;!&ndash;                      <div class="control__indicator"></div>&ndash;&gt;-->
+<!--                    </label>-->
+<!--                  </div>-->
+<!--                  <div class="d-flex mb-5 align-items-center">-->
+<!--                    <label class="form-check-input"><span class="caption">Client</span>-->
+<!--                        {{ form.is_client }}-->
+<!--&lt;!&ndash;                      <div class="control__indicator"></div>&ndash;&gt;-->
+<!--                    </label>-->
+<!--                  </div>-->
+
+
+
+
+<!--                    <input type="submit" value="Register">--><div>
                     <button type="submit" class="btn btn-primary mb-2">Register</button>
+                        </div>
                     </div>
-                </form>
+                     </form>
 
  </div>
             </div>
 <!--            <div class="col-md-6 padding_0">-->
 <!--            </div>-->
-          </div>
+<!--          </div>-->
   </center>
 <!--        </div>-->
 <!--      </div>-->
@@ -221,5 +228,6 @@
     <!-- javascript -->
     <script src="{% static 'js/owl.carousel.js' %}"></script>
     <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</div>
 </body>
 </html>
