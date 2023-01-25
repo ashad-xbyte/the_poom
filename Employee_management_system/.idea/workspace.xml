@@ -5,18 +5,105 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8e1d6a7-7655-499d-ac0c-15d586cb3448" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/auth/user_login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMS/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/animate.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/default-skin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/icomoon.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/jquery-ui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/jquery.fancybox.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/jquery.mCustomScrollbar.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/meanmenu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/nice-select.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/normalize.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/owl.carousel.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/responsive.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/slick.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/banner-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/call-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/fb-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/fb-icon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/icon-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/icon-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/icon-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/icon-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/img-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/img-10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/img-11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/img-12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/img-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/img-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/img-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/img-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/img-6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/img-7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/img-8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/img-9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/linkedin-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/linkedin-icon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/mail-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/map-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/round-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/round-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/search-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/services-bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/twitter-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/twitter-icon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/youtub-icon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/custom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/jquery-3.0.0.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/jquery.mCustomScrollbar.concat.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/jquery.validate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/modernizer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/plugin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/popper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/slider-setting.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EMS/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/EMS/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EMS/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/EMS/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EMS/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/EMS/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/auth/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/auth/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/auth/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee_management_system/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Employee_management_system/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employee_management_system/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Employee_management_system/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/scripts.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/auth/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/auth/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -32,14 +119,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/Ashad_Khira/Training/Extras/Role_based_login_system-master",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

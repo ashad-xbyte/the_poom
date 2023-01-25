@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'EMS.apps.EmsConfig'
 ]
 
 MIDDLEWARE = [
@@ -77,7 +78,7 @@ WSGI_APPLICATION = 'Employee_management_system.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ems',
+        'NAME': 'ums',
         'USER': 'root',
         'PASSWORD': 'xbyte',
         'HOST': 'localhost',
@@ -139,3 +140,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, 'checkstatic/static/')
 ]
+
+AUTH_USER_MODEL = 'EMS.User'
