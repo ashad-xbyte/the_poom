@@ -54,9 +54,21 @@
               <li class="nav-item">
                 <a class="nav-link" href="/">Team</a>
               </li>
+              {% if user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link" href="/">Contact Us</a>
+                <a class="nav-link" href="{% url 'logout_view' %}">Logut</a>
               </li>
+              {% else %}
+                <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Get Started
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'login_view' %}">Login</a></li>
+              <li><a class="dropdown-item" href="{% url 'register' %}">Signup</a></li>
+            </ul>
+          </li>
+              {% endif %}
             </ul>
           </div>
         </nav>
@@ -64,8 +76,11 @@
           <h1 class="banner_taital">XBYTE <br>CRAWLING</h1>
           <p class="banner_text">X-Byte Enterprise Crawling offers web scraping solutions to extract data from websites and Mobile Apps and transform it into actionable insights.</p>
           <div class="btn_main">
-            <div class="contact_bt"><a href="{% url 'login_view' %}">Login</a></div>
+            {% if user.is_authenticated %}
+            {% else %}
+          <div class="contact_bt"><a href="{% url 'login_view' %}">Login</a></div>
             <div class="contact_bt"><a href="{% url 'register' %}">Sign up</a></div>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -383,5 +398,7 @@
     <!-- javascript -->
     <script src="{% static 'js/owl.carousel.js' %}"></script>
     <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

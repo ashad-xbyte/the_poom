@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import SignUpForm, LoginForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 # Create your views here.
@@ -72,3 +72,8 @@ def devloper(request):
 
 def client(request):
     return render(request,'client.html')
+
+def logout_view(request):
+    logout(request)
+    return render(request, 'index.html')
+    # Redirect to a success page.
