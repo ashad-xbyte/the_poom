@@ -1,0 +1,74 @@
+from django.shortcuts import render, redirect
+from .forms import SignUpForm, LoginForm
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+
+# Create your views here.
+
+
+def index(request):
+    return render(request, 'index.html')
+
+
+def register(request):
+    msg = None
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            msg = 'user created'
+            messages.info(request, 'Your login request has been sent to Admin for approval')
+            return redirect('register')
+        else:
+            msg = 'form is not valid'
+    else:
+        form = SignUpForm()
+    return render(request,'register.html', {'form': form, 'msg': msg})
+
+
+def login_view(request):
+    form = LoginForm(request.POST or None)
+    msg = None
+    if request.method == 'POST':
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None and user.is_admin:
+                login(request, user)
+                return redirect('adminpage')
+            elif user is not None and user.is_sales:
+                login(request, user)
+                return redirect('sales')
+            elif user is not None and user.is_production:
+                login(request, user)
+                return redirect('production')
+            elif user is not None and user.is_devloper:
+                login(request, user)
+                return redirect('devloper')
+            elif user is not None and user.is_client:
+                login(request, user)
+                return redirect('client')
+            else:
+                msg= 'invalid credentials'
+        else:
+            messages.info(request, 'Your  request yet not approved')
+
+        messages.info(request, 'Invalid credentials OR your request may be not approved')
+    return render(request, 'login.html', {'form': form, 'msg': msg})
+
+
+def admin(request):
+    return render(request,'admin.html')
+
+def sales(request):
+    return render(request,'sales.html')
+
+def production(request):
+    return render(request,'production.html')
+
+def devloper(request):
+    return render(request,'devloper.html')
+
+def client(request):
+    return render(request,'client.html')
