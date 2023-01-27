@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import SignUpForm, LoginForm, FilesN
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from .models import User, File_1
 
 
 # Create your views here.
@@ -56,6 +58,7 @@ def login_view(request):
         messages.info(request, 'Invalid credentials OR your request may be not approved')
     return render(request, 'login.html', {'form': form, 'msg': msg})
 
+@login_required
 def admin(request):
     form = (request.POST or None)
     if request.method == 'POST':
@@ -74,18 +77,36 @@ def admin(request):
         # messages.info(request, 'invalid form')
     return render(request,'admin.html', {'form': form})
 
+@login_required
 def sales(request):
     return render(request,'sales.html')
 
+@login_required
 def production(request):
     return render(request,'production.html')
 
+@login_required
 def devloper(request):
-    return render(request,'devloper.html')
+    ab = File_1.objects.values_list('title', 'file')
+    print(ab)
+    context = {'ab': ab[0]}
 
+    # filepath = ab.file
+    # filename = ab.title
+    form = FilesN(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+    # context = {'filepath': filepath,
+    #            'form': form,
+    #            'filename': filename
+    #            }
+    return render(request, 'devloper.html', context)
+
+@login_required
 def client(request):
     return render(request,'client.html')
 
+@login_required
 def logout_view(request):
     logout(request)
     return render(request, 'index.html')
