@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect
-from .forms import SignUpForm, LoginForm
+from .forms import SignUpForm, LoginForm, FilesN
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+
 
 # Create your views here.
 
 
 def index(request):
     return render(request, 'index.html')
-
 
 def register(request):
     msg = None
@@ -24,7 +24,6 @@ def register(request):
     else:
         form = SignUpForm()
     return render(request,'register.html', {'form': form, 'msg': msg})
-
 
 def login_view(request):
     form = LoginForm(request.POST or None)
@@ -57,9 +56,23 @@ def login_view(request):
         messages.info(request, 'Invalid credentials OR your request may be not approved')
     return render(request, 'login.html', {'form': form, 'msg': msg})
 
-
 def admin(request):
-    return render(request,'admin.html')
+    form = (request.POST or None)
+    if request.method == 'POST':
+        form = FilesN(request.POST, request.FILES)
+        print("sahi he")
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'File uploaded')
+            return redirect('adminpage')
+        else:
+            messages.info(request, 'Failed')
+            print(form.errors)
+    else:
+        # print("galat he")
+        form = FilesN()
+        # messages.info(request, 'invalid form')
+    return render(request,'admin.html', {'form': form})
 
 def sales(request):
     return render(request,'sales.html')
