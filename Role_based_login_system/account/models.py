@@ -18,7 +18,7 @@ class User(AbstractUser):
 
 class File_1(models.Model):
     title = models.CharField(max_length=50, null=True, blank=True)
-    file = models.FileField(max_length=100, null=True, blank=True)
+    file = models.FileField(null=True, blank=True)
     description = models.CharField(max_length=500, null=True, blank=True)
     is_admin_file = models.BooleanField('Is admin file', default=True)
     is_sales_file = models.BooleanField('Is sales file', default=False)
