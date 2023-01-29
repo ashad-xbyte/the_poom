@@ -8,9 +8,9 @@ from .models import User, File_1
 
 # Create your views here.
 
-
 def index(request):
     return render(request, 'index.html')
+
 
 def register(request):
     msg = None
@@ -25,7 +25,8 @@ def register(request):
             msg = 'form is not valid'
     else:
         form = SignUpForm()
-    return render(request,'register.html', {'form': form, 'msg': msg})
+    return render(request, 'register.html', {'form': form, 'msg': msg})
+
 
 def login_view(request):
     form = LoginForm(request.POST or None)
@@ -51,60 +52,69 @@ def login_view(request):
                 login(request, user)
                 return redirect('client')
             else:
-                msg= 'invalid credentials'
+                msg = 'invalid credentials'
         else:
             messages.info(request, 'Your  request yet not approved')
 
         messages.info(request, 'Invalid credentials OR your request may be not approved')
     return render(request, 'login.html', {'form': form, 'msg': msg})
 
+
 @login_required
 def admin(request):
-    form = (request.POST or None)
-    if request.method == 'POST':
-        form = FilesN(request.POST, request.FILES)
-        print("sahi he")
-        if form.is_valid():
-            form.save()
-            messages.info(request, 'File uploaded')
-            return redirect('adminpage')
+    u1 = request.user
+    model = User
+    if model.objects.filter(username=u1) & model.objects.filter(is_admin=1):
+        form = (request.POST or None)
+        if request.method == 'POST':
+            form = FilesN(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                messages.info(request, 'File uploaded')
+                return redirect('adminpage')
+            else:
+                messages.info(request, 'Failed')
+                print(form.errors)
         else:
-            messages.info(request, 'Failed')
-            print(form.errors)
+            # print("galat he")
+            form = FilesN()
+            # messages.info(request, 'invalid form')
+        return render(request, 'admin.html', {'form': form})
     else:
-        # print("galat he")
-        form = FilesN()
-        # messages.info(request, 'invalid form')
-    return render(request,'admin.html', {'form': form})
+        return render(request, 'login_error.html')
+
 
 @login_required
 def sales(request):
-    return render(request,'sales.html')
+    return render(request, 'sales.html')
+
 
 @login_required
 def production(request):
-    return render(request,'production.html')
+    model = User
+    if model.objects.filter(is_production=1):
+        fileall = File_1.objects.filter(is_production_file=1)
+        context = {'fileall': fileall}
+        return render(request, 'production.html', context)
+    else:
+        return render(request, 'login_error.html')
+
 
 @login_required
 def devloper(request):
-    ab = File_1.objects.values_list('title', 'file')
-    print(ab)
-    context = {'ab': ab[0]}
+    model = User
+    if model.objects.filter(is_devloper=1):
+        fileall = File_1.objects.filter(is_devloper_file=1)
+        context = {'fileall': fileall}
+        return render(request, 'devloper.html', context)
+    else:
+        return render(request, 'login_error.html')
 
-    # filepath = ab.file
-    # filename = ab.title
-    form = FilesN(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        form.save()
-    # context = {'filepath': filepath,
-    #            'form': form,
-    #            'filename': filename
-    #            }
-    return render(request, 'devloper.html', context)
 
 @login_required
 def client(request):
-    return render(request,'client.html')
+    return render(request, 'client.html')
+
 
 @login_required
 def logout_view(request):

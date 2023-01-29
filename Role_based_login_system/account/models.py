@@ -17,7 +17,7 @@ class User(AbstractUser):
     roles = models.CharField(max_length=10, choices=role, default="client")
 
 class File_1(models.Model):
-    file = models.FileField(null=True, blank=True)
+    file = models.FileField(upload_to='files', null=True, blank=True)
     title = models.CharField(max_length=50, null=True, blank=True)
     description = models.CharField(max_length=500, null=True, blank=True)
     is_admin_file = models.BooleanField('Is admin file', default=True)
