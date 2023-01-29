@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
-from .forms import SignUpForm, LoginForm
-from django.contrib.auth import authenticate, login
+from .forms import SignUpForm, LoginForm, FilesN
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from .models import User, File_1
+
 
 # Create your views here.
-
 
 def index(request):
     return render(request, 'index.html')
@@ -23,7 +25,7 @@ def register(request):
             msg = 'form is not valid'
     else:
         form = SignUpForm()
-    return render(request,'register.html', {'form': form, 'msg': msg})
+    return render(request, 'register.html', {'form': form, 'msg': msg})
 
 
 def login_view(request):
@@ -50,7 +52,7 @@ def login_view(request):
                 login(request, user)
                 return redirect('client')
             else:
-                msg= 'invalid credentials'
+                msg = 'invalid credentials'
         else:
             messages.info(request, 'Your  request yet not approved')
 
@@ -58,17 +60,64 @@ def login_view(request):
     return render(request, 'login.html', {'form': form, 'msg': msg})
 
 
+@login_required
 def admin(request):
-    return render(request,'admin.html')
+    u1 = request.user
+    model = User
+    if model.objects.filter(username=u1) & model.objects.filter(is_admin=1):
+        form = (request.POST or None)
+        if request.method == 'POST':
+            form = FilesN(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                messages.info(request, 'File uploaded')
+                return redirect('adminpage')
+            else:
+                messages.info(request, 'Failed')
+                print(form.errors)
+        else:
+            # print("galat he")
+            form = FilesN()
+            # messages.info(request, 'invalid form')
+        return render(request, 'admin.html', {'form': form})
+    else:
+        return render(request, 'login_error.html')
 
+
+@login_required
 def sales(request):
-    return render(request,'sales.html')
+    return render(request, 'sales.html')
 
+
+@login_required
 def production(request):
-    return render(request,'production.html')
+    model = User
+    if model.objects.filter(is_production=1):
+        fileall = File_1.objects.filter(is_production_file=1)
+        context = {'fileall': fileall}
+        return render(request, 'production.html', context)
+    else:
+        return render(request, 'login_error.html')
 
+
+@login_required
 def devloper(request):
-    return render(request,'devloper.html')
+    model = User
+    if model.objects.filter(is_devloper=1):
+        fileall = File_1.objects.filter(is_devloper_file=1)
+        context = {'fileall': fileall}
+        return render(request, 'devloper.html', context)
+    else:
+        return render(request, 'login_error.html')
 
+
+@login_required
 def client(request):
-    return render(request,'client.html')
+    return render(request, 'client.html')
+
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return render(request, 'index.html')
+    # Redirect to a success page.

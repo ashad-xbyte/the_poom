@@ -20,3 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('account.urls')),
 ]
+
+admin.site.site_header = "X-Byte"
+admin.site.site_title = "Admin_Page"
+admin.site.index_title = "Welcome to Admin Portal"

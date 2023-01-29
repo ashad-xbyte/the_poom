@@ -15,3 +15,17 @@ class User(AbstractUser):
             ('devloper', "Developer"),
             ('client', "Client"))
     roles = models.CharField(max_length=10, choices=role, default="client")
+
+class File_1(models.Model):
+    file = models.FileField(upload_to='files', null=True, blank=True)
+    title = models.CharField(max_length=50, null=True, blank=True)
+    description = models.CharField(max_length=500, null=True, blank=True)
+    is_admin_file = models.BooleanField('Is admin file', default=True)
+    is_sales_file = models.BooleanField('Is sales file', default=False)
+    is_production_file = models.BooleanField('Is production file', default=False)
+    is_devloper_file = models.BooleanField('Is devloper file', default=False)
+    is_client_file = models.BooleanField('Is client file', default=False)
+
+
+    def __str__(self):
+        return self.title + ": " + str(self.file)

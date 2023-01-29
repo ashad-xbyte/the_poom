@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>devloper</title>
-</head>
-<body>
-        <h1> hello {{ user.username }} your role is devloper</h1>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+    <div class="col-md-4">
+        <div class="container">
+    <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Sr. no</th>
+                    <th scope="col">File name</th>
+                    <th scope="col">Download</th>
+                </tr>
+            </thead>
+            {% for i in fileall %}
+            <tbody>
+            <tr>
+                <th scope="row">{{i.id}}</th>
+                <td>{{i.file}}</td>
+                <td><a href = "{{i.file.url}}" target="_blank">download</a></td>
+            </tr>
+            </tbody>
+            {% endfor %}
+    </table>
+        </div>
+</div>
+{% endblock %}
