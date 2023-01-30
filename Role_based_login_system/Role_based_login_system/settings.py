@@ -130,3 +130,10 @@ AUTH_USER_MODEL = 'account.User'
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+EMAIL_HOST = 'smtp.elasticemail.com'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = 'ashad.khira.xbyte@gmail.com'
+EMAIL_HOST_PASSWORD = '1F22BC9D3144FB7606C88527B4180A5D8EF5'
+# EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = True

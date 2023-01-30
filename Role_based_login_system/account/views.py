@@ -4,7 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import User, File_1
-
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 
@@ -67,13 +68,41 @@ def admin(request):
     u1 = request.user
     u2 = request.user.roles
     model = User
+    email_to_user = request.user.email
+    # print(email_to_user)
     if model.objects.filter(username=u1) & model.objects.filter(is_admin=1):
         form = (request.POST or None)
         if request.method == 'POST':
             form = FilesN(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
+                role1 = form.cleaned_data.values()
+                sales_perm =  (list(role1)[3])
+                prod_perm = (list(role1)[4])
+                dev_perm = (list(role1)[5])
+                client_perm = (list(role1)[6])
+                if sales_perm:
+                    abc = model.objects.values('email').filter(roles='sales')
+                    lst=[]
+                    for i in abc:
+                        print(i['email'])
+                        lst.append(i['email'])
+                    print(lst)
+                    send_mail(
+                        'Subject here',
+                        'Here is the message.',
+                        settings.EMAIL_HOST_USER,
+                        lst,
+                        fail_silently=False,
+                    )
                 messages.info(request, 'File uploaded')
+                # send_mail(
+                #     'Subject here',
+                #     'Here is the message.',
+                #     settings.EMAIL_HOST_USER,
+                #     ['sharad.raval.xbyte@gmail.com'],
+                #     fail_silently=False,
+                # )
                 return redirect('adminpage')
             else:
                 messages.info(request, 'Failed')
@@ -89,7 +118,14 @@ def admin(request):
 
 @login_required
 def sales(request):
-    return render(request, 'sales.html')
+    model = User
+    u1 = request.user
+    if model.objects.filter(username=u1) & model.objects.filter(is_sales=1):
+        fileall = File_1.objects.filter(is_sales_file=1)
+        context = {'fileall': fileall}
+        return render(request, 'sales.html', context)
+    else:
+        return render(request, 'login_error.html')
 
 
 @login_required
@@ -132,6 +168,8 @@ def upload_file(request):
     u2 = request.user.roles
     model = User
     form = (request.POST or None)
+    email_to_user = request.user.email
+    # print(email_to_user)
     if request.method == 'POST':
         form = FilesN(request.POST, request.FILES)
         if form.is_valid():

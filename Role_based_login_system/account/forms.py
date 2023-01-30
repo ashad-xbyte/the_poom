@@ -85,4 +85,4 @@ class FilesN(forms.ModelForm):
     #     ))
     class Meta:
         model = File_1
-        fields = ('file', 'title', 'description', 'is_admin_file', 'is_sales_file', 'is_production_file', 'is_devloper_file', 'is_client_file')
+        fields = ('file', 'title', 'description', 'is_sales_file', 'is_production_file', 'is_devloper_file', 'is_client_file')
