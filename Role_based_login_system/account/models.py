@@ -29,3 +29,15 @@ class File_1(models.Model):
 
     def __str__(self):
         return self.title + ": " + str(self.file)
+
+class File_2(models.Model):
+    file = models.FileField(upload_to='files', null=True, blank=True)
+    title = models.CharField(max_length=50, null=True, blank=True)
+    description = models.CharField(max_length=500, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    email = models.ForeignKey(User, on_delete=models.CASCADE, related_name='email')
+    roles = models.ForeignKey(User, on_delete=models.CASCADE, related_name='roles')
+
+    def __str__(self):
+        return self.title + ": " + str(self.file)
+

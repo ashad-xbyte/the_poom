@@ -1,8 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, File_1
-
-choice_1 = [('asd', 'asdas'),('asdads', 'a21sdas') ]
+from .models import User, File_1, File_2
 
 class LoginForm(forms.Form):
     username = forms.CharField(
@@ -87,4 +85,10 @@ class FilesN(forms.ModelForm):
     #     ))
     class Meta:
         model = File_1
-        fields = ('file', 'title', 'description', 'is_admin_file', 'is_sales_file', 'is_production_file', 'is_devloper_file', 'is_client_file')
+        fields = ('file', 'title', 'description', 'is_sales_file', 'is_production_file', 'is_devloper_file', 'is_client_file')
+
+class FilesM(forms.ModelForm):
+
+    class Meta:
+        model = File_2
+        fields = ('file', 'title', 'description', 'user', 'email', 'roles')
