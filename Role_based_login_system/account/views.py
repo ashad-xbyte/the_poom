@@ -36,33 +36,36 @@ def login_view(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-            if user is not None and user.is_admin:
-                login(request, user)
-                return redirect('adminpage')
-            elif user is not None and user.is_sales:
-                login(request, user)
-                return redirect('sales')
-            elif user is not None and user.is_production:
-                login(request, user)
-                return redirect('production')
-            elif user is not None and user.is_devloper:
-                login(request, user)
-                return redirect('devloper')
-            elif user is not None and user.is_client:
-                login(request, user)
-                return redirect('client')
+            if user:
+                if user.is_admin:
+                    login(request, user)
+                    return redirect('adminpage')
+                elif user.is_sales:
+                    login(request, user)
+                    return redirect('sales')
+                elif user.is_production:
+                    login(request, user)
+                    return redirect('production')
+                elif user.is_devloper:
+                    login(request, user)
+                    return redirect('devloper')
+                elif user.is_client:
+                    login(request, user)
+                    return redirect('client')
+                else:
+                    messages.info(request, 'Your  request yet not approved')
             else:
-                msg = 'invalid credentials'
+                messages.info(request, 'Invalid credentials!')
         else:
-            messages.info(request, 'Your  request yet not approved')
+            messages.info(request, 'Invalid Username!')
 
-        messages.info(request, 'Invalid credentials OR your request may be not approved')
     return render(request, 'login.html', {'form': form, 'msg': msg})
 
 
 @login_required
 def admin(request):
     u1 = request.user
+    u2 = request.user.roles
     model = User
     if model.objects.filter(username=u1) & model.objects.filter(is_admin=1):
         form = (request.POST or None)
@@ -92,7 +95,8 @@ def sales(request):
 @login_required
 def production(request):
     model = User
-    if model.objects.filter(is_production=1):
+    u1 = request.user
+    if model.objects.filter(username=u1) & model.objects.filter(is_production=1):
         fileall = File_1.objects.filter(is_production_file=1)
         context = {'fileall': fileall}
         return render(request, 'production.html', context)
@@ -103,7 +107,8 @@ def production(request):
 @login_required
 def devloper(request):
     model = User
-    if model.objects.filter(is_devloper=1):
+    u1 = request.user
+    if model.objects.filter(username=u1) & model.objects.filter(is_devloper=1):
         fileall = File_1.objects.filter(is_devloper_file=1)
         context = {'fileall': fileall}
         return render(request, 'devloper.html', context)
@@ -115,9 +120,28 @@ def devloper(request):
 def client(request):
     return render(request, 'client.html')
 
-
 @login_required
 def logout_view(request):
     logout(request)
     return render(request, 'index.html')
     # Redirect to a success page.
+
+@login_required
+def upload_file(request):
+    u1 = request.user
+    u2 = request.user.roles
+    model = User
+    form = (request.POST or None)
+    if request.method == 'POST':
+        form = FilesN(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'File uploaded')
+        else:
+            messages.info(request, 'Failed')
+            print(form.errors)
+    else:
+        # print("galat he")
+        form = FilesN()
+        # messages.info(request, 'invalid form')
+    return render(request, 'upload_file.html', {'form': form, 'u2': u2})

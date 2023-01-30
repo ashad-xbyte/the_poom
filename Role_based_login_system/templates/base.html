@@ -14,6 +14,23 @@
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
+<!--  SMTP-->
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script type="text/javascript">
+     function sendEmail(){
+     Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "ashad.khira.xbyte@gmail.com",
+    Password : "1F22BC9D3144FB7606C88527B4180A5D8EF5",
+    To : 'sharad.raval.xbyte@gmail.com',
+    From : "ashad.khira.xbyte@gmail.com",
+    Subject : "This is the subject",
+    Body : "And this is the body"
+  }).then(
+  message => alert(message)
+  );}
+  </script>
+
 <!-- bootstrap css -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
 <!-- style css -->
@@ -71,7 +88,7 @@
               </li>
               {% if user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link" href="{{user.roles}}">Dashbord</a>
+                <a class="nav-link" href="/{{user.roles}}">Dashbord</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout_view' %}">Logout</a>
@@ -162,5 +179,6 @@
 <!--      <script src="{% static 'assets/dist/js/bootstrap.bundle.min.js' %}"></script>-->
 
       <script src="{% static 'js/sidebars.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </body>
 </html>

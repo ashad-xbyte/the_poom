@@ -2,40 +2,8 @@
 {% block content %}
 {% load static %}
 
-
 <div class="d-flex p-2 bd-highlight">
-  <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-    <ul class="list-unstyled ps-0">
-      <li class="mb-1">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-          Actions
-        </button>
-        <div class="collapse" id="orders-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Manage permissions</a></li>
-            <li><a href="#" class="link-dark rounded">Upload files</a></li>
-            <li><a href="#" class="link-dark rounded">Manage files</a></li>
-<!--            <li><a href="#" class="link-dark rounded">Returned</a></li>-->
-          </ul>
-        </div>
-      </li>
-      <li class="border-top my-3"></li>
-      <li class="mb-1">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          My Account
-        </button>
-        <div class="collapse" id="account-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Profile</a></li>
-            <li><a href="#" class="link-dark rounded">Settings</a></li>
-            <li><a href="{% url 'logout_view' %}" class="link-dark rounded">Sign out</a></li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-        <div class="col-md-6 padding_left_0">
+<div class="col-md-6">
             <div class="mail_section">
                 {% if messages %}
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -62,10 +30,10 @@
                     <label for="description">Description</label>
                       {{ form.description}}
                     </div>
-                    <label class="control control--checkbox mb-0"><span class="caption">Admin</span>
-                        {{ form.is_admin_file }}
-                    </label>
-                    <br><label class="control control--checkbox mb-0"><span class="caption">Sales</span>
+<!--                    <label class="control control&#45;&#45;checkbox mb-0"><span class="caption">Admin</span>-->
+<!--                        {{ form.is_admin_file }}-->
+<!--                    </label>-->
+                    <label class="control control--checkbox mb-0"><span class="caption">Sales</span>
                         {{ form.is_sales_file }}
                     </label>
                     <br><label class="control control--checkbox mb-0"><span class="caption">Production</span>
@@ -79,10 +47,12 @@
                     </label>
                 <br>
                     <br>
-                    <div><button type="submit" class="btn btn-primary mb-2">Upload</button></div>
+                    <div><button type="submit" class="btn btn-primary mb-2" onclick="sendEmail()">Upload</button></div>
+
                   </div>
               </form>
             </div>
         </div>
-      </div>
+    </div>
+
 {% endblock %}

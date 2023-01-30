@@ -26,6 +26,5 @@ class File_1(models.Model):
     is_devloper_file = models.BooleanField('Is devloper file', default=False)
     is_client_file = models.BooleanField('Is client file', default=False)
 
-
     def __str__(self):
         return self.title + ": " + str(self.file)

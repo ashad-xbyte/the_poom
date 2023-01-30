@@ -13,4 +13,5 @@ urlpatterns = [
     path('production/', views.production, name='production'),
     path('devloper/', views.devloper, name='devloper'),
     path('client/', views.client, name='client'),
+    path('upload/', views.upload_file, name='upload'),
 ]+static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
