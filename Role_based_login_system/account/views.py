@@ -95,7 +95,49 @@ def admin(request):
                         lst,
                         fail_silently=False,
                     )
-                messages.info(request, 'File uploaded')
+                if prod_perm:
+                    abc = model.objects.values('email').filter(roles='production')
+                    lst=[]
+                    for i in abc:
+                        print(i['email'])
+                        lst.append(i['email'])
+                    print(lst)
+                    send_mail(
+                        'Subject here',
+                        'Here is the message.',
+                        settings.EMAIL_HOST_USER,
+                        lst,
+                        fail_silently=False,
+                    )
+                if dev_perm:
+                    abc = model.objects.values('email').filter(roles='devloper')
+                    lst=[]
+                    for i in abc:
+                        print(i['email'])
+                        lst.append(i['email'])
+                    print(lst)
+                    send_mail(
+                        'Subject here',
+                        'Here is the message.',
+                        settings.EMAIL_HOST_USER,
+                        lst,
+                        fail_silently=False,
+                    )
+                if client_perm:
+                    abc = model.objects.values('email').filter(roles='client')
+                    lst=[]
+                    for i in abc:
+                        print(i['email'])
+                        lst.append(i['email'])
+                    print(lst)
+                    send_mail(
+                        'Subject here',
+                        'Here is the message.',
+                        settings.EMAIL_HOST_USER,
+                        lst,
+                        fail_silently=False,
+                    )
+                messages.info(request, 'File uploaded & Notification has been sent !')
                 # send_mail(
                 #     'Subject here',
                 #     'Here is the message.',
